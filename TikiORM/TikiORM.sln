@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikiORM.Core", "TikiORM.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikiORM.Core.Tests", "TikiORM.Core.Tests\TikiORM.Core.Tests.csproj", "{46665316-C0B9-4C45-935D-3880C0084AA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikiORM.SqlServer", "TikiORM.SqlServer\TikiORM.SqlServer.csproj", "{5FB8D053-C425-42D0-A093-1C5DE0461FE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikiORM.SqlServer.Tests", "TikiORM.SqlServer.Tests\TikiORM.SqlServer.Tests.csproj", "{53F2F5CA-195F-4427-BEBA-2CF26CA566AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{46665316-C0B9-4C45-935D-3880C0084AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46665316-C0B9-4C45-935D-3880C0084AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46665316-C0B9-4C45-935D-3880C0084AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB8D053-C425-42D0-A093-1C5DE0461FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB8D053-C425-42D0-A093-1C5DE0461FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB8D053-C425-42D0-A093-1C5DE0461FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB8D053-C425-42D0-A093-1C5DE0461FE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F2F5CA-195F-4427-BEBA-2CF26CA566AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F2F5CA-195F-4427-BEBA-2CF26CA566AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F2F5CA-195F-4427-BEBA-2CF26CA566AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F2F5CA-195F-4427-BEBA-2CF26CA566AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

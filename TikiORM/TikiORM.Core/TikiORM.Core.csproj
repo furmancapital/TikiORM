@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionHelpers.cs" />
-    <Compile Include="DbParameter.cs" />
+    <Compile Include="IQuery.cs" />
+    <Compile Include="IQueryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query.cs" />
     <Compile Include="QueryUnknownParametersException.cs" />
   </ItemGroup>
   <ItemGroup>

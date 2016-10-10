@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,9 +34,12 @@ namespace TikiORM.Core.Tests
         [Test]
         public void Constructor_Verify_Parameters_Properly_Populated()
         {
-            var query = new QueryWithParameters("SELECT * FROM SOMEWHERE WHERE Param = @Param", new { Param = "myParam" });
+            dynamic testParameters = new ExpandoObject();
+            testParameters.Param = "myParam";
+
+            var query = new QueryWithParameters("SELECT * FROM SOMEWHERE WHERE Param = @Param", testParameters );
             Assert.AreEqual(1, query.QueryParameters.Count(), "Did not add the parameter");
-            Assert.AreEqual("@Param", query.QueryParameters.First().Key, "Did not populate the parameter name properly");
+            Assert.AreEqual("Param", query.QueryParameters.First().Key, "Did not populate the parameter name properly");
             Assert.AreEqual("myParam", query.QueryParameters.First().Value, "Did not populate the parameter value properly");
         }
     }

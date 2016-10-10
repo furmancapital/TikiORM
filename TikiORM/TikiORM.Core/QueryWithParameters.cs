@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace FurmanCapital.TikiORM.Core
     /// </summary>
     public class QueryWithParameters
     {
-        public QueryWithParameters(string sqlQuery, dynamic parameters)
+        public QueryWithParameters(string sqlQuery, IDictionary<string, object> parameters)
         {
             if (sqlQuery == null)
             {
@@ -24,6 +25,25 @@ namespace FurmanCapital.TikiORM.Core
             }
 
             this.UnderlyingQuery = sqlQuery;
+            this.QueryParameters = parameters;
+
+        }
+
+        public QueryWithParameters(string sqlQuery, ExpandoObject parameters)
+        {
+            if (sqlQuery == null)
+            {
+                throw new ArgumentNullException(nameof(sqlQuery));
+            }
+
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
+            this.UnderlyingQuery = sqlQuery;
+            this.QueryParameters = parameters;
+
         }
 
         /// <summary>
@@ -38,7 +58,7 @@ namespace FurmanCapital.TikiORM.Core
         /// <summary>
         /// Returns a collection of parameters
         /// </summary>
-        public ICollection<KeyValuePair<string, dynamic>> QueryParameters
+        public IDictionary<string, object> QueryParameters
         {
             get;
             private set;

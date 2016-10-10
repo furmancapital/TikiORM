@@ -7,7 +7,7 @@
     <ProjectGuid>{DB3C4BC4-39EC-4C65-83B2-1557C307B2AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FurmanCapital.TikiORM.Core</RootNamespace>
+    <RootNamespace>FurmanCapitalTechGroup.TikiORM.Core</RootNamespace>
     <AssemblyName>TikiORM.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,12 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionHelpers.cs" />
+    <Compile Include="Mappers\ColumnNameToObjectResultMapper.cs" />
+    <Compile Include="Mappers\FuncBasedResultMapper.cs" />
     <Compile Include="Mappers\IResultMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query.cs" />
-    <Compile Include="QueryFactory.cs" />
-    <Compile Include="QueryUnknownParametersException.cs" />
-    <Compile Include="QueryWithParameters.cs" />
+    <Compile Include="RetrievalQueryExecutor.cs" />
+    <Compile Include="RetrievalQueryExecutorBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\" />

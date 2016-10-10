@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FurmanCapital.TikiORM.Core.Mappers
+namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
 {
     /// <summary>
     /// This interface represents a mapper that is used to map objects from the underlying reader

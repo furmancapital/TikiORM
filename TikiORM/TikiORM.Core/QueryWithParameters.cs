@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +7,20 @@ using System.Threading.Tasks;
 namespace FurmanCapital.TikiORM.Core
 {
     /// <summary>
-    /// This class represents a query that does NOT have any parameters associated with it
+    /// This class represents a query that has a single set of parameters.
     /// </summary>
-    public class Query
+    public class QueryWithParameters
     {
-        public Query (string sqlQuery)
+        public QueryWithParameters(string sqlQuery, dynamic parameters)
         {
             if (sqlQuery == null)
             {
                 throw new ArgumentNullException(nameof(sqlQuery));
+            }
+
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
             }
 
             this.UnderlyingQuery = sqlQuery;
@@ -31,5 +35,13 @@ namespace FurmanCapital.TikiORM.Core
             private set;
         }
 
+        /// <summary>
+        /// Returns a collection of parameters
+        /// </summary>
+        public ICollection<KeyValuePair<string, dynamic>> QueryParameters
+        {
+            get;
+            private set;
+        }
     }
 }

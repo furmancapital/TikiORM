@@ -41,7 +41,7 @@ namespace TikiORM.Core.Tests
         [Test]
         public void Constructor_Verify_Parameters_Properly_Populated()
         {
-            var query = new Query("SELECT * FROM SOMEWHERE WHERE Param = @Param", new { Param = "myParam" });
+            var query = new SqlServerQuery("SELECT * FROM SOMEWHERE WHERE Param = @Param", new { Param = "myParam" });
             Assert.AreEqual(1, query.Parameters.Count(), "Did not add the parameter");
             Assert.AreEqual("@Param", query.Parameters.First().ParameterName, "Did not populate the parameter name properly");
             Assert.AreEqual("myParam", query.Parameters.First().Value, "Did not populate the parameter value properly");

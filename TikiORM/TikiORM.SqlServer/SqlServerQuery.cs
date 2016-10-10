@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Dynamic;
 
 namespace FurmanCapital.TikiORM.SqlServer
 {
@@ -26,6 +27,8 @@ namespace FurmanCapital.TikiORM.SqlServer
             }
 
             this.UnderlyingQuery = sqlQuery;
+
+            this.ExtractAndVerifyParameters(queryParameter);
         }
 
         public IReadOnlyCollection<IDbDataParameter> Parameters
@@ -49,7 +52,13 @@ namespace FurmanCapital.TikiORM.SqlServer
                 return;
             }
 
+            var parameterObjectParameters = (from p in ((Type)parameterObject.GetType()).GetProperties()
+                                             select p).ToDictionary(item => item.Name, item => item.GetValue(parameterObject));
 
+            if (parameterObjectParameters.Any())
+            {
+
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FurmanCapitalTechGroup.TikiORM.Core
 {
-    class RetrievalQueryExecutorBuilder
+    public class RetrievalQueryExecutorBuilder
     {
         private RetrievalQueryExecutorBuilder()
         {

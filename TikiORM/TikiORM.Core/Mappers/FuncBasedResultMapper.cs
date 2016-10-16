@@ -28,7 +28,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
             this.MappingFunction = mappingFunction;
         }
 
-        public TItem MapResult(IDataReader dataReader)
+        public TItem MapResult(IDataReader dataReader, QueryResultStructure queryResultStructure)
         {
             return MappingFunction(dataReader);
         }

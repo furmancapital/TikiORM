@@ -17,8 +17,9 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
         /// <summary>
         /// Maps the results from the passed in data reader
         /// </summary>
-        /// <param name="dataReader"></param>
+        /// <param name="dataReader">The datareader from which we will be mapping the result</param>
+        /// <param name="resultStructure">The structure of the results that are returned from the query execution</param>
         /// <returns></returns>
-        TResult MapResult(IDataReader dataReader);
+        TResult MapResult(IDataReader dataReader, QueryResultStructure resultStructure);
     }
 }

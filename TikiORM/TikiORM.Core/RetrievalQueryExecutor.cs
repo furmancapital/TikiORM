@@ -73,9 +73,10 @@ namespace FurmanCapitalTechGroup.TikiORM.Core
 
                 using (var reader = command.ExecuteReader())
                 {
+                    var structure = QueryResultStructure.FromDataReader(reader);
                     while (reader.Read())
                     {
-                        results.Add(this.ResultMapper.MapResult(reader));
+                        results.Add(this.ResultMapper.MapResult(reader, structure));
                     }
                 }
             }

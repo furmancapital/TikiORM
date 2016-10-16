@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\ColumnNameToObjectResultMapperTests.cs" />
     <Compile Include="RetrievalQueryExecutorBuilderTests.cs" />
     <Compile Include="RetrievalQueryExecutorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

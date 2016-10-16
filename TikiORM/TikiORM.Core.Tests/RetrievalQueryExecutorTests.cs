@@ -131,8 +131,13 @@ namespace FurmanCapitalTechGroup.TikiORM.Core
                 .Once()
                 .Return(true);
 
+            //mock no fields so that no query structure is populated as we do not care about
+            //it in this test
+            this.DataReader.Stub(x => x.FieldCount)
+                .Return(0); 
 
-            mockMapper.Expect(x => x.MapResult(this.DataReader))
+
+            mockMapper.Expect(x => x.MapResult(Arg<IDataReader>.Is.Equal(this.DataReader), Arg<QueryResultStructure>.Is.Anything))
                 .Return(mockTestClass);
 
             var result = RetrievalQueryExecutorBuilder<MyTestClass>.ForQuery("QUERY")

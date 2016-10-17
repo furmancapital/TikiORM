@@ -26,7 +26,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
             var sourceObjectType = sourceObject.GetType();
             var fieldMappingCollection = new ObjectFieldMappingCollection(sourceObjectType);
 
-            foreach(var property in sourceObjectType.GetProperties())
+            foreach(var property in sourceObjectType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
             {
                 fieldMappingCollection.AddFieldMapping(property.Name, property);
             }
@@ -59,6 +59,11 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
             ObjectFieldMapping fieldMapping;
             this._fieldNameToMapping.TryGetValue(fieldName, out fieldMapping);
             return fieldMapping;
+        }
+
+        public IEnumerable<ObjectFieldMapping> GetMappings()
+        {
+            return this._fieldNameToMapping.Values;
         }
 
         public override string ToString()

@@ -80,5 +80,10 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
                 throw new KeyNotFoundException($"No column named {columnName} was found in the result.");
             }
         }
+
+        public IEnumerable<string> GetColumns()
+        {
+            return this.FieldNameToIndex.Keys;
+        }
     }
 }

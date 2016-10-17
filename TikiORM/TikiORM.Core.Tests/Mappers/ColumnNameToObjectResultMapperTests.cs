@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
     {
         private class MyDummyClass
         {
-            public string Property1
+            public string PropertyString
             {
                 get;set;
             }
@@ -91,6 +92,17 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
             return new ColumnNameToObjectResultMapper<MyDummyClass>();
         }
 
+        private PropertyInfo GetPropertyFromType (Type sourceType, string property)
+        {
+            var targetProperty = sourceType.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                .Where(item => item.Name.Equals(property))
+                .FirstOrDefault();
+
+            Assert.NotNull(targetProperty, $"Unable to find the {property} property");
+
+            return targetProperty;
+        }
+
         [Test]
         public void MapResult_Verify_Matching_Private_Columns_Mapped()
         {
@@ -106,7 +118,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
 
             var mappedObject = this.GetMapper().MapResult(this.DataReader, dummyStructure);
 
-            var privateValue = mappedObject.GetType().GetProperty("PrivateStringProperty").GetValue(mappedObject);
+            var privateValue = GetPropertyFromType(mappedObject.GetType(), ("PrivateStringProperty")).GetValue(mappedObject);
 
             Assert.AreEqual("TARGET_VAL", privateValue, "Did not set private value properly");
         }

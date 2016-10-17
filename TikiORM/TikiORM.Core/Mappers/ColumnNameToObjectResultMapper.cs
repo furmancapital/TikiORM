@@ -56,14 +56,33 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
                 }
 
                 var fieldIndex = resultStructure.GetColumnIndex(column);
+                if (dataReader.IsDBNull(fieldIndex))
+                {
+                    continue;
+                }
 
                 switch (associatedMapping.Property.PropertyType.FullName)
                 {
                     case "System.String":
-                        if (!dataReader.IsDBNull(fieldIndex))
-                        {
-                            associatedMapping.Property.SetValue(createdInstance, dataReader.GetString(fieldIndex));
-                        }
+                        associatedMapping.Property.SetValue(createdInstance, dataReader.GetString(fieldIndex));
+                        break;
+                    case "System.Double":
+                        associatedMapping.Property.SetValue(createdInstance, dataReader.GetDouble(fieldIndex));
+                        break;
+                    case "System.Int16":
+                        associatedMapping.Property.SetValue(createdInstance, dataReader.GetInt16(fieldIndex));
+                        break;
+                    case "System.Int32":
+                        associatedMapping.Property.SetValue(createdInstance, dataReader.GetInt32(fieldIndex));
+                        break;
+                    case "System.Int64":
+                        associatedMapping.Property.SetValue(createdInstance, dataReader.GetInt64(fieldIndex));
+                        break;
+                    case "System.DateTime":
+                        associatedMapping.Property.SetValue(createdInstance, dataReader.GetDateTime(fieldIndex));
+                        break;
+                    case "System.Decimal":
+                        associatedMapping.Property.SetValue(createdInstance, dataReader.GetDecimal(fieldIndex));
                         break;
                 }
 

@@ -13,6 +13,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
     public interface IResultMapper<TResult>
+        where TResult : new()
     {
         /// <summary>
         /// Maps the results from the passed in data reader

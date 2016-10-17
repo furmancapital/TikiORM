@@ -30,6 +30,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core
     /// </summary>
     /// <typeparam name="TItem"></typeparam>
     public class RetrievalQueryExecutorBuilder<TItem>
+        where TItem : new()
     {
         private IResultMapper<TItem> ResultMapper
         {

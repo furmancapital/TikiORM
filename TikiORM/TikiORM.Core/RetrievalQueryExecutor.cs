@@ -10,6 +10,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core
 {
 
     public class RetrievalQueryExecutor<TItem>
+        where TItem : new()
     {
         public IResultMapper<TItem> ResultMapper
         {

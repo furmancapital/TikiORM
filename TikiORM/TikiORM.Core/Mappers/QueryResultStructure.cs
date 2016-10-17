@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
 {
+    /// <summary>
+    /// This is a helper class to associate field name to index to improve ado.net field access
+    /// but not forcing it to perform a look up every time and allow to query by name
+    /// while having this class perform the translations to the numeric field index
+    /// </summary>
     public class QueryResultStructure
     {
         private Dictionary<string, int> FieldNameToIndex

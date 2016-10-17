@@ -18,6 +18,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core
         /// <param name="executor"></param>
         /// <returns></returns>
         public static List<T> RetrievalQuery<T> (this IDbConnection connection, RetrievalQueryExecutor<T> executor)
+            where T : new()
         {
             return executor.PerformOnConnection(connection);
         }

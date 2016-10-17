@@ -12,6 +12,49 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
     [TestFixture]
     public class ColumnNameToObjectResultMapperTests
     {
+        private class MyDummyClass
+        {
+            public string Property1
+            {
+                get;set;
+            }
+
+            public Int16 PropertyInt16
+            {
+                get;set;
+            }
+
+            public Int32 PropertyInt32
+            {
+                get;set;
+            }
+
+            public Int64 PropertyInt64
+            {
+                get;set;
+            }
+
+            public DateTime PropertyDateTime
+            {
+                get;set;
+            }
+
+            public double PropertyDouble
+            {
+                get;set;
+            }
+
+            public decimal PropertyDecimal
+            {
+                get;set;
+            }
+
+            private string PrivateStringProperty
+            {
+                get;set;
+            }
+        }
+
         private IDataReader DataReader
         {
             get;set;
@@ -43,10 +86,30 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
             return structure;
         }
 
-        [Test]
-        public void MapResult_Verify_If_Column_Name_Matches_Associated_Property_Should_Be_Set_On_Object()
+        private ColumnNameToObjectResultMapper<MyDummyClass> GetMapper()
         {
-
+            return new ColumnNameToObjectResultMapper<MyDummyClass>();
         }
+
+        [Test]
+        public void MapResult_Verify_Matching_Private_Columns_Mapped()
+        {
+            var dummyStructure = this.CreateDummyStructure(new[] { "PrivateStringProperty" });
+
+            var targetColumnIndex = dummyStructure.GetColumnIndex("PrivateStringProperty");
+
+            this.DataReader.Expect(x => x.IsDBNull(targetColumnIndex))
+                .Return(false);
+
+            this.DataReader.Expect(x => x.GetString(targetColumnIndex))
+                .Return("TARGET_VAL");
+
+            var mappedObject = this.GetMapper().MapResult(this.DataReader, dummyStructure);
+
+            var privateValue = mappedObject.GetType().GetProperty("PrivateStringProperty").GetValue(mappedObject);
+
+            Assert.AreEqual("TARGET_VAL", privateValue, "Did not set private value properly");
+        }
+
     }
 }

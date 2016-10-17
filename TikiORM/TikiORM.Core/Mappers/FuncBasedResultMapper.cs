@@ -12,6 +12,7 @@ namespace FurmanCapitalTechGroup.TikiORM.Core.Mappers
     /// via the constructor to allow for simple mappings
     /// </summary>
     public class FuncBasedResultMapper<TItem> : IResultMapper<TItem>
+        where TItem : new()
     {
         Func<IDataReader, TItem> MappingFunction
         {
